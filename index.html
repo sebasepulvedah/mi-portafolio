@@ -39,6 +39,23 @@
         .about-me img { border-radius: 50%; width: 120px; border: 3px solid #38bdf8; }
         a { color: #38bdf8; text-decoration: none; }
         a:hover { text-decoration: underline; }
+        .btn-project {
+
+            display: inline-block;
+            background-color: #38bdf8; /* Color celeste brillante */
+            color: #0f172a !important; /* Texto oscuro para contraste */
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: transform 0.2s, background-color 0.2s;
+        }
+
+        .btn-project:hover {
+            background-color: #7dd3fc;
+            transform: translateY(-2px); /* Efecto de levante al pasar el mouse */
+            text-decoration: none !important;
+        }
     </style>
 </head>
 <body>
@@ -74,7 +91,11 @@
                 <li>Habilidades de comunicación y trabajo en equipo[cite: 27].</li>
             </ul>
         </section>
-
+        <div style="margin-top: 20px;">
+            <a href="https://github.com/sebasepulvedah/edumanager" class="btn-project" target="_blank">
+                🚀 Ver Repositorio del Proyecto
+            </a>
+        </div>  
         <footer>
             <p>© 2026 - Sebastián Sepúlveda | <a href="https://github.com/sebasepulvedah">GitHub</a></p>
         </footer>
