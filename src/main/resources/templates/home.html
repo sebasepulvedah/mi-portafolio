@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en"
+xmlns:th="http://www.thymeleaf.org"
+xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+</head>
+
+<body>
+    <div th:replace="~{layout :: navbar}"></div>
+<div class="container mt-5">
+    <div class="p-5 mb-4 bg-white rounded-3 shadow-sm border-start border-primary border-5">
+        <div class="container-fluid py-2">
+            <h1 class="display-5 fw-bold text-dark">Bienvenido, <span th:text="${#authentication.name}">Usuario</span></h1>
+            <p class="col-md-8 fs-4 text-muted">Coordinación Académica para Estudiantes</p>
+        </div>
+    </div>
+
+    <div class="row g-4 mt-2">
+        <div class="col-md-4">
+            <div class="card h-100 shadow-sm text-center p-4">
+                <div class="card-body">
+                    <h3 class="card-title text-primary">Cursos</h3>
+                    <p class="text-muted small">Explora y gestiona los cursos disponibles.</p>
+                    <a th:href="@{/cursos}" class="btn btn-primary w-100">Ver Cursos</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-4" sec:authorize="hasRole('ADMIN')">
+            <div class="card h-100 shadow-sm text-center p-4">
+                <div class="card-body">
+                    <h3 class="card-title text-success">Usuarios</h3>
+                    <p class="text-muted small">Administración de alumnos.</p>
+                    <a th:href="@{/admin/usuarios}" class="btn btn-success w-100">Gestionar</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-4">
+            <div class="card h-100 shadow-sm text-center p-4">
+                <div class="card-body">
+                    <h3 class="card-title text-info">Mi Perfil</h3>
+                    <p class="text-muted small">Actualiza tus datos y contraseña.</p>
+                    <a th:href="@{/usuario/editar}" class="btn btn-info text-white w-100">Ver Perfil</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+ <div th:replace="~{layout :: footer}"></div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

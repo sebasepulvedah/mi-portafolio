@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Usuario</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="container mt-5">
+
+    <div class="card shadow">
+        <div class="card-header bg-warning text-dark">
+            <h2 class="mb-0">Editar Perfil de Usuario</h2>
+        </div>
+        <div class="card-body">
+            <form th:action="@{/admin/usuarios/actualizar}" th:object="${usuario}" method="post">
+                <input type="hidden" th:field="*{id}">
+
+                <div class="row">
+                    <div class="col-md-6 border-end">
+                        <h4 class="text-muted">Datos de Cuenta</h4>
+                        <div class="mb-3">
+                            <label class="form-label">Nombre de Usuario</label>
+                            <input type="text" th:field="*{username}" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Email</label>
+                            <input type="email" th:field="*{email}" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Rol del Sistema</label>
+                            <select th:field="*{role}" class="form-select">
+                                <option value="ROLE_USER">Estudiante (User)</option>
+                                <option value="ROLE_ADMIN">Administrador</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <h4 class="text-muted">Datos Personales</h4>
+                        <div th:if="*{estudiante != null}">
+                            <input type="hidden" th:field="*{estudiante.id}">
+                            
+                            <div class="mb-3">
+                                <label class="form-label">Nombre Real</label>
+                                <input type="text" th:field="*{estudiante.nombre}" class="form-control">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Apellido</label>
+                                <input type="text" th:field="*{estudiante.apellido}" class="form-control">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">DNI / RUN</label>
+                                <input type="text" th:field="*{estudiante.dni}" class="form-control">
+                            </div>
+                        </div>
+                        <div th:unless="*{estudiante != null}" class="alert alert-info">
+                            Este usuario no tiene un perfil de estudiante asociado.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-4">
+                    <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+                    <a th:href="@{/admin/usuarios}" class="btn btn-secondary">Cancelar</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</body>
+</html>

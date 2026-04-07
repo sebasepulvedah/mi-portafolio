@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edu manager</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" >
+  </head>
+<body>
+    <div class="container">
+
+		<h2 th:text="${titulo}"></h2>
+			<div class="container mt-3">
+	    	<div th:if="${success}" class="alert alert-success alert-dismissible fade show" role="alert">
+	        <span th:text="${success}"></span>
+	        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+	    </div>
+		
+		<form action="#" th:action="@{/estudiantes/guardar}" th:object="${estudiante}" method="post">
+		<input type="hidden" th:field="*{id}">
+		<div class="mb-3">
+			<label for="nombre" class="form-label">Nombre</label>
+			<input type="text" th:field="*{nombre}" class="form-control">
+		</div>
+		<div class="mb-3">
+			<label for="apellido" class="form-label">Apellido</label>
+			<input type="text" th:field="*{apellido}" class="form-control">
+		</div>
+		<div class="mb-3">
+			<label for="dni" class="form-label">DNI:</label>
+			<input type="text" th:field="*{dni}" class="form-control">
+			
+		</div>
+			<button type="submit" class="btn btn-primary" th:text="${titulo}">Registrar Estudiante</button>
+			<a th:href="@{/estudiantes}" class="btn btn-secondary">volver</a>
+	
+    </form>
+    </div>
+		
+		
+	</div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
